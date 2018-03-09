@@ -1,4 +1,7 @@
-language:none
+language: none
+
+services:
+  - postgres
 
 env:
   - SHIPPABLE_POSTGRES_VERSION="9.4"
