@@ -6,7 +6,11 @@ matrix:
         - PERL_VERSION=5.22.0 
         - POSTGRES_VERSION=10 
         - PACKAGES="nginx postgresql-9.4-pgtap texlive-latex-recommended texlive-xetex phantomjs"
-      
+     - env: 
+        - PERL_VERSION=5.16.0 
+        - POSTGRES_VERSION=9.6.8 
+        - PACKAGES="nginx postgresql-9.4-pgtap texlive-latex-recommended texlive-xetex phantomjs"  
+
 build:
   ci:
     # Install specific version of PostgreSQL
