@@ -12,3 +12,6 @@ build:
     - /etc/init.d/postgresql restart
     - sudo -u postgres createdb mydb
     - psql -c 'create role shippable with superuser;' -U postgres
+    - sudo apt-get install -y perl
+    - wget -O - https://install.perlbrew.pl | bash
+    
