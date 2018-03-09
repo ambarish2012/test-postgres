@@ -1,9 +1,15 @@
 language: none
 
+matrix:
+  include:
+    - PERL_VERSION=5.22
+      POSTGRES_VERSION=10
+      PACKAGES=nginx postgresql-9.4-pgtap texlive-latex-recommended texlive-xetex phantomjs
+      
 build:
   ci:
+    # Install specific version of PostgreSQL
     - sudo apt-get install -y wget ca-certificates
-    - POSTGRES_VERSION=10
     - echo "================= Installing Postgres $POSTGRES_VERSION ==================="
     - sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
     - wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
@@ -12,6 +18,11 @@ build:
     - /etc/init.d/postgresql restart
     - sudo -u postgres createdb mydb
     - psql -c 'create role shippable with superuser;' -U postgres
+    # Perl
     - sudo apt-get install -y perl
     - wget -O - https://install.perlbrew.pl | bash
-    
+    - perlbrew install perl-$PERL_VERSION
+    - perlbrew switch perl-$PERL_VERSION
+    # Install packages
+    - sudo apt-get update
+    - sudo apt-get install $PACKAGES
