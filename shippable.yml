@@ -2,9 +2,10 @@ language: none
 
 matrix:
   include:
-    - env: PERL_VERSION=5.22
-      env: POSTGRES_VERSION=10
-      env: PACKAGES=nginx postgresql-9.4-pgtap texlive-latex-recommended texlive-xetex phantomjs
+    - env: 
+        - PERL_VERSION=5.22 
+        - POSTGRES_VERSION=10 
+        - PACKAGES=nginx postgresql-9.4-pgtap texlive-latex-recommended texlive-xetex phantomjs
       
 build:
   ci:
