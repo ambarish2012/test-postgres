@@ -18,12 +18,14 @@ build:
     - /etc/init.d/postgresql restart
     - sudo -u postgres createdb mydb
     - psql -c 'create role shippable with superuser;' -U postgres
-    # Perl
+    
+    # Install Perl
     - sudo apt-get install -y perl
     - wget -O - https://install.perlbrew.pl | bash
-    - perlbrew init
-    - perlbrew install perl-$PERL_VERSION
-    - perlbrew switch perl-$PERL_VERSION
-    # Install packages
+    - ~/perl5/perlbrew/bin/perlbrew init
+    - ~/perl5/perlbrew/bin/perlbrew install perl-$PERL_VERSION
+    - ~/perl5/perlbrew/bin/perlbrew switch perl-$PERL_VERSION
+    
+    # Install packages needed by the matrix environment
     - sudo apt-get update
     - sudo apt-get install $PACKAGES
