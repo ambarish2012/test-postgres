@@ -28,10 +28,12 @@ build:
     - sudo apt-get install -y perl
     - wget -O - https://install.perlbrew.pl | bash
     - ~/perl5/perlbrew/bin/perlbrew self-upgrade
+    - ~/perl5/perlbrew/bin/perlbrew install-patchperl
     - source ~/perl5/perlbrew/etc/bashrc
     - ~/perl5/perlbrew/bin/perlbrew init
-    - ~/perl5/perlbrew/bin/perlbrew install perl-"$PERL_VERSION"
+    - ~/perl5/perlbrew/bin/perlbrew --notest --force install perl-"$PERL_VERSION"
     - ~/perl5/perlbrew/bin/perlbrew switch perl-"$PERL_VERSION"
+    - perl -v
     
     # Install packages needed by the matrix environment
     - sudo apt-get update
