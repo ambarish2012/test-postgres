@@ -12,6 +12,10 @@ matrix:
         - PACKAGES="nginx postgresql-9.4-pgtap texlive-latex-recommended texlive-xetex phantomjs"  
 
 build:
+  cache: true
+  cache_dir_list:
+    - ~/perl5/perlbrew
+    
   ci:
     # Install specific version of PostgreSQL
     - sudo apt-get install -y wget ca-certificates
